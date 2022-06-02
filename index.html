@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aufaroot18 - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/56139045?v=4" type="image/png">
+</head>
+
+<body>
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+    <div id="profile">
+        <div id="profile_img" style="background: url(https://avatars.githubusercontent.com/u/56139045?v=4) center; border-radius: 50%;"></div>
+        <div id="username"><span style="display:block;">Rafi Ramadhana</span><a href="https://github.com/apiiRR">@apiiRR</a></div>
+        <div id="userbio" style="display: block;">Software Engineer.</div>
+        <div id="about">
+            <span style="display:block;"><i class="fas fa-users"></i> &nbsp; STT-NF</span>
+            <span style="display:block;"><i class="fas fa-envelope"></i> &nbsp; ramadhanarafi437@gmail.com</span>
+            <span style="display:none;"><i class="fas fa-link"></i> &nbsp; <a href="aufaroot18.github.io">aufaroot18.github.io</a></span>
+            <span style="display:block;"><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp; Solo, Jawa Tengah, Indonesia</span>
+            <span style="display:block;"><i class="fas fa-user-tie"></i> &nbsp;&nbsp; Available for hire</span>
+            <div class="socials">
+                <span style="display:block"><a href="linkedin.com/in/rafi-ramadhana02" target="_blank" class="socials"><i class="fab fa-linkedin-in"></i></a></span>
+                <span style="display:block"><a href="https://github.com/apiiRR" target="_blank" class="socials"><i class="fab fa-github"></i></a></span>
+                <span style="display:block"><a href="https://t.me/rafi_ramadhana" target="_blank" class="socials"><i class="fab fa-telegram"></i></a></span>
+            </div>
+        </div>
+    </div>
+    <div id="display">
+        <div id="work">
+            <h1>My Porfolio</h1>
+            <div class="projects" id="work_section">
+                <a href="https://github.com/apiiRR/log-jarvis" target="_blank">
+                    <section>
+                        <div class="section_title">Employee Attendance</div>
+                        <div class="about_section">
+                            <span style="display:block;">Attendance website for the company PT Jarvis Integration Solusi</span>
+                        </div>
+                        <div class="bottom_section">
+                            <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Laravel</span>
+                            <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                            <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                        </div>
+                    </section>
+                </a>
+                <a href="https://github.com/apiiRR/absensi-smkcn" target="_blank">
+                    <section>
+                        <div class="section_title">Student Attendance</div>
+                        <div class="about_section">
+                            <span style="display:block;">Citra Negara Vocational High School student attendance website, Depok</span>
+                        </div>
+                        <div class="bottom_section">
+                            <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Laravel</span>
+                            <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                            <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                        </div>
+                    </section>
+                </a>
+                <a href="https://github.com/apiiRR/mini_project_alta_attedance" target="_blank">
+                    <section>
+                        <div class="section_title">Employee Attendance App</div>
+                        <div class="about_section">
+                            <span style="display:block;">Application as a mini project alterra academy</span>
+                        </div>
+                        <div class="bottom_section">
+                            <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Flutter</span>
+                            <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                            <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                        </div>
+                    </section>
+                </a>
+            </div>
+        </div>
+        <div id="forks" style="display:none;">
+            <h1>Forks.</h1>
+            <div class="projects" id="forks_section"></div>
+        </div>
+        <div id="blog_section">
+            <h1>Blog.</h1>
+            <div id="blogs"></div>
+        </div>
+        <div id="footer">
+            <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        setTimeout(function() {
+            document.getElementById("loading").classList.add("animated");
+            document.getElementById("loading").classList.add("fadeOut");
+            setTimeout(function() {
+                document.getElementById("loading").classList.remove("animated");
+                document.getElementById("loading").classList.remove("fadeOut");
+                document.getElementById("loading").style.display = "none";
+            }, 800);
+        }, 1500);
+        $.getJSON("blog.json", function(blog) {
+            blog = blog || [];
+            if (blog.length == 0) {
+                return (document.getElementById("blog_section").style.display =
+                    "none");
+            }
+            for (var i = 0; i < blog.length; i++) {
+                $("#blogs").append(`
+            <a href="./blog/${blog[i].url_title}/" target="_blank">
+                <section>
+                    <img src="./blog/${blog[i].url_title}/${blog[i].top_image}">
+                    <div class="blog_container">
+                        <div class="section_title">${blog[i].title}</div>
+                        <div class="about_section">
+                            ${blog[i].sub_title}
+                        </div>
+                    </div>
+                </section>
+            </a>
+            `);
+            }
+        }).fail(function() {
+            return (document.getElementById("blog_section").style.display = "none");
+        });
+    </script>
+
+    <script>
+        const magicProjectsGrid = new MagicGrid({
+            container: "#work_section",
+            animate: false,
+            gutter: 30, // default gutter size
+            static: true,
+            useMin: false,
+            maxColumns: 2,
+            useTransform: true
+        });
+
+        const magicForksGrid = new MagicGrid({
+            container: "#forks_section",
+            animate: false,
+            gutter: 30, // default gutter size
+            static: true,
+            useMin: false,
+            maxColumns: 2,
+            useTransform: true
+        });
+
+        $("document").ready(() => {
+            magicProjectsGrid.listen();
+            magicForksGrid.listen();
+        });
+    </script>
+
+
+</body>
+
+</html>
